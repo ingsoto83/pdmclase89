@@ -21,6 +21,7 @@ void main() async{
 
 class AuthPage extends StatelessWidget{
   final FirebaseAuth _mAuth = FirebaseAuth.instance;
+   bool registro = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +30,10 @@ class AuthPage extends StatelessWidget{
       builder: (context, snapshot) {
         if(snapshot.hasData){
           return HomePage();
+        }else if(registro){
+          return LoginPage();//RegisterPage - registro false  callback
         }else{
-          return LoginPage();
+          return LoginPage();//registro true
         }
       });
   }
